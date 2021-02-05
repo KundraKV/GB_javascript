@@ -1,0 +1,40 @@
+1. Конвертер валют.
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	var r = prompt ("Укажите, количество рублей");
+	var e = 89.39;
+	var d = 75.52;
+
+	e = parseInt(e);
+	d = parseInt(d);
+	r = parseInt(r);
+
+	e = e / r;
+	d = d / r;
+	alert (
+		e.toFixed(2) + " евро \n"+ 
+		d.toFixed(2) + " долларов" );
+
+</script>
+
+
+
+
+2. Подсчет площади трапеции.
+<meta charset = "utf-8">
+<script type="text/javascript">
+	
+	var a = prompt ("Введите, длину первого основания:");
+	var b = prompt ("Введите, длину второго основания:");
+	var h = prompt ("Введите, высоту");
+
+	a = parseInt(a);
+	b = parseInt(b);
+	h = parseInt(h);
+	var s = ((a + b) / 2) * h;
+
+	alert ("Площадь трапеции будет равна " + s);
+
+</script>
