@@ -1,0 +1,110 @@
+1. Игра в загадки.
+  a. Загадать загадку. Если ответ верен – поздравить пользователя. Затем сообщить, что игра окончена.
+  b. Если ответ неверный – написать пользователю, что он не угадал.
+  c. Добавить еще 3 загадки. Подсчитать количество правильных ответов, сообщить пользователю.
+  d. (По желанию). В качестве верного ответа принимать несколько вариантов ответов. Например, «Стул», «стул», «табуретка» и так далее.
+  
+<meta charset="utf-8">
+<script type="text/javascript">
+	var userAnswer1 = prompt("Угадай загадку:\n Висит груша - нельзя скушать. Что это?");
+		
+	var right = 0; 
+
+		if (userAnswer1 == "Лампочка" || userAnswer1 == "лампочка" || userAnswer1 == "ЛАМПОЧКА"){
+			right++
+			alert ("Поздравляю, это правильный ответ!");
+		} else {
+			alert ("К сожалению, вы не угадали!");
+		}
+
+	var userAnswer2 = prompt("Зимой и летом одним цветом?");
+		if (userAnswer2 == "Елка" || userAnswer2 == "Ёлка" || userAnswer2 == "елка" || userAnswer2 == "ёлка" || userAnswer2 == "Ель" || userAnswer2 == "ель" || userAnswer2 == "ЕЛКА" || userAnswer2 == "ЁЛКА" || userAnswer2 == "ЕЛЬ"){
+			right++
+			alert ("Поздравляю, это правильный ответ!");
+		} else {
+			alert ("К сожалению, вы не угадали!");
+		}
+
+	var userAnswer3 = prompt("Не лает, не кусает, а в дом не пускает?");
+		if (userAnswer3 == "Замок" || userAnswer3 == "замок" || userAnswer3 == "ЗАМОК"){
+			right++
+			alert ("Поздравляю, это правильный ответ!");
+		} else {
+			alert ("К сожалению, вы не угадали!");
+		}
+
+alert("Игра закончена\nВсего правильных ответов: " + right);
+</script>
+
+
+
+2. Банковская программа.
+Пользователь вводит сумму вклада и процент, который будет начисляться ежегодно. Отобразить размер вклада поочередно на ближайшие 5 лет.
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	var deposit = +prompt("Введите сумму вклада:");
+	var percent = +prompt("Ввкдите процент начисления:");
+
+	for(var i = 1; i < 6; i++){
+		deposit = parseInt(deposit * percent / 100 + deposit);
+		document.write("Сумма за " + i + " год, составит: " + deposit + "<br>");
+	}
+
+</script>
+
+
+3. Дописать игру “Угадай число” (по желанию).
+Сделать игру с двумя игроками и бесконечным числом попыток. Сделайте возможность выйти из игры по желанию одного из игроков.
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	var answer = parseInt(Math.random() * 100);
+	var name1 = prompt("Игрок 1.\n Ваше имя:");
+	var name2 = prompt("Игрок 2.\n Ваше имя:");
+	var userAnswer1 = +prompt( name1 + ", угадай число от 0 до 100. ");
+	var userAnswer2 = +prompt(name2 + ", угадай число от 0 до 100.");
+	//var maxTryCount = 2
+
+	for(var tryCount = 0; 1 < 20; tryCount++){
+		if(userAnswer1 == answer && userAnswer2 == answer){
+			alert("Верно! Вы оба угадали!");
+			break;
+		} else if(userAnswer1 == answer && userAnswer2 != answer){
+			alert(name1 + ", Вы угадали!\n" + name2 + ", Вы проиграли");
+			alert("Игра закончена, правильный ответ: " + answer);
+		} else if(userAnswer2 == answer && userAnswer1 != answer){
+			alert(name2 + ", Вы угадали!\n" + name1 + ", Вы проиграли");
+			alert("Игра закончена, правильный ответ: " + answer);
+		}else if(userAnswer1 < answer && userAnswer2 < answer){
+			alert(name1 + ", Вы ввели слишком маленькое число\n" + name2 + ", Вы ввели слишком маленькое число");
+		}else if(userAnswer1 < answer && userAnswer2 > answer){
+			alert(name1 + ", Вы ввели слишком маленькое число\n" + name2 + ", Вы ввели слишком большое число");
+		} else if(userAnswer1 > answer && userAnswer2 > answer){
+			alert(name1 + ", Вы ввели слишком большое число\n" + name2 + ", Вы ввели слишком большое число");
+		}else if(userAnswer1 > answer && userAnswer2 < answer){
+			alert(name1 + ", Вы ввели слишком большое число\n" + name2 + ", Вы ввели слишком маленькое число");
+		}
+
+		//document.write ("У вас остаось: " + (maxTryCount - tryCount) + " поаыток <br>");
+		//userAnswer = +prompt("Попробуй еще раз. Угадай число от 1 до 100\n У вас остаось: " + (maxTryCount - tryCount) + " попыток");
+		var exit = prompt("Хотите ли вы прекратить игру? (да/нет)");
+		if(exit == "да"|| exit == "Да" || exit == "ДА"){
+			alert("Спасибо за игру! Правильный ответ:" + answer);
+			break
+		}else(exit == "нет"|| exit == "Нет" || exit == "НЕТ")
+
+
+		userAnswer1 = +prompt(name1 + ", попробуй еще раз. Угадай число от 0 до 100. ");
+		userAnswer2 = +prompt(name2 + ", попробуй еще раз. Угадай число от 0 до 100.")
+		}
+	
+	/*if(tryCount == maxTryCount)
+		alert("Вы проиграли");
+	
+	alert("Правильный ответ: " + answer);*/
+	
+
+</script>
