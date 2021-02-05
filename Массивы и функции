@@ -1,0 +1,190 @@
+1. Функции для работы с массивами
+a. Написать функцию, которая принимает в качестве параметра число n. Результатом работы функции является массив из N элементов со значениями 1, 2, 3… n.
+b. Написать функцию, которая принимает массив чисел. Результатом работы функции является сумма чисел этого массива.
+c. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает максимальное число.
+d. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает минимальное число.
+f. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает только четные числа из этого массива. 
+Чтобы определить четность числа, воспользуйтесь оператором для подсчета остатка от деления: x % 2. Если остаток от деления числа на 2 равен 0, число будет четное.
+
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	function generateArray(number,array){
+		for(var i = 1; i <= number; i++){
+			i = 0 + i;
+			array.push(i);
+		}
+		return array 
+	}
+
+	function summMas(mass, Lenght){
+		var summ = 0;
+		for(i = 0; i < Lenght; i++){
+			summ = mass[i] + summ;
+		}
+		return summ;
+	}
+
+	function maxNumberArray (N){
+		var maxNumber = N[0];
+		for(i = 0; i < N.length; i++){
+			if (maxNumber <= N[i])
+				maxNumber = N[i];
+		}
+		return maxNumber;
+	}
+
+	function minNumberArray (N){
+		var minNumber = N[0];
+		for(i = 0; i < N.length; i++){
+			if (minNumber >= N[i])
+				minNumber = N[i];
+		}
+		return minNumber;
+	}
+
+	function evenNumberArray (N){
+		var a = [];
+		for(i = 0; i < N.length; i++){
+			var n = N[i] % 2;
+			if(n == 0)
+				a.push(N[i]);
+		}
+			return a;
+	}
+
+	var n = +prompt("Введите конечное значение массива");
+	var N = [];
+	generateArray(n,N);
+	document.write("Массив из числа " + n + " равен: <br>" + N);
+	var Lenght = N.length; 
+	var sum = summMas(N, Lenght);
+	document.write("<br>Сумма равна " + sum);
+
+	//N = [6, 10, 2 ,8] //Для проверки следующих функций
+	var max = maxNumberArray(N);
+	document.write("<br>Максимальное значение " + max);
+
+	var min = minNumberArray (N);
+	document.write("<br>Минимальное значение " + min);
+
+	var evenNumber = evenNumberArray (N);
+	document.write("<br>Четные значения данного массива " + evenNumber);
+
+
+</script>
+
+2. *Добавить в программу по слепой печати еще несколько уровней.
+a. Уровень 2: Пользователь видит сообщение: «Поставьте мизинец левой руки на букву Ф, безымянный палец — на Ы, средний — на В, указательный — на А. 
+Мизинец правой руки на букву Ж, безымянный палец — на Д, средний — на Л, указательный — на О. Запомните расположение пальцев. 
+Повторяйте за мной». Пользователь получает последовательность из букв Ы и В длиной в 10 символов, и должен её воспроизвести. 
+Если ему это не удалось, попытка повторяется. В случае успеха переходим к следующему уровню.
+
+b. Уровень 3: Пользователь видит сообщение: «Поставьте мизинец левой руки на букву Ф, безымянный палец — на Ы, средний — на В, указательный — на А. 
+Мизинец правой руки на букву Ж, безымянный палец — на Д, средний -— на Л, указательный — на О. Запомните расположение пальцев». 
+Пользователь получает последовательность из букв О и Ж длиной в 10 символов, и должен её воспроизвести. Если ему это не удалось — попытка повторяется.
+В случае успеха переходим к следующему уровню.
+
+
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	function generateText(letters, lenght){
+		var text = "";
+		for(var i = 0; i < lenght; i++){
+			var n = getRandomNumber(letters.length);
+			text = text + letters[n];
+		}
+		return text;
+
+	}
+	function getRandomNumber(max){
+			return parseInt(Math.random() * max);
+		}
+	function correctAnswer(userText, text) {
+		while(true){
+			if(userText == text){
+				alert("Все верно!");
+				return
+			} else {
+				alert("Вы ошиблись. Попробуйте еще раз.");
+				userText = prompt(text);
+			}
+		}
+	}
+	function term(){
+		alert("Поставьте мизинец левой руки на букву Ф, безымянный палец — на Ы, средний — на В, указательный — на А. Мизинец правой руки на букву Ж, безымянный палец — на Д, средний — на Л, указательный — на О. Запомните расположение пальцев. Повторяйте за мной");
+		alert("Набирайте текст, не смотря на клавиатуру.");
+	}
+
+	alert("Вас приветствует программа по обучению слепой печати.");
+	term();
+		var lenght = 10;
+		var text = generateText(["ф", "а"], lenght);
+		var userText = prompt(text);
+		correctAnswer(userText, text);
+		alert("Вы переходите на следующий уровень!");
+
+	term();
+		text = generateText(["ы", "в"], lenght);
+		userText = prompt(text);
+		correctAnswer(userText, text);
+		alert("Вы переходите на следующий уровень!");
+
+	term();
+		text = generateText(["о", "ж"], lenght);
+		userText = prompt(text);
+		correctAnswer(userText, text);
+		
+	alert("Подавляю! Вы отлично справились с заданием!");
+
+</script>
+
+3. Доработать игру в загадки:
+a. Избавиться в игре в загадки от дублирования кода, используя массивы и функции.
+b. Сделать так, чтобы программа поддерживала несколько правильных ответов на один и тот же вопрос. 
+Все возможные варианты задаются программистом в коде программы.
+
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+function check(userAnswer, answer, answer1, answer2, right) {
+	if (userAnswer == answer || userAnswer == answer1 || userAnswer == answer2){
+			right++
+			alert ("Поздравляю, это правильный ответ!");
+		} else {
+			alert ("К сожалению, вы не угадали!");
+		}
+		return right;
+}
+
+	var userAnswer = prompt("Угадай загадку:\n Висит груша - нельзя скушать. Что это?");
+	userAnswer = userAnswer.toLowerCase();
+	answer = "лампочка";
+	var answer1 = NaN;
+	var answer2 = NaN;
+	var right = 0;
+	right = check(userAnswer, answer, answer1, answer2, right); 
+
+	var userAnswer = prompt("Следующая загадка:\nЗимой и летом одним цветом?");
+	userAnswer = userAnswer.toLowerCase();
+	answer = "елка";
+	answer1 = "ёлка";
+	answer2 = "ель";
+
+	right = check(userAnswer, answer, answer1, answer2, right); 
+		
+	var userAnswer = prompt("Последняя загадка:\nНе лает, не кусает, а в дом не пускает?");
+	userAnswer = userAnswer.toLowerCase();
+	answer = "замок";
+	answer1 = NaN;
+	answer2 = NaN;
+	right = check(userAnswer, answer, answer1, answer2, right); 
+	
+
+alert("Игра закончена\nВсего правильных ответов: " + right);
+</script>
+
+
